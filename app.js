@@ -4,7 +4,8 @@ Build all of your functions for displaying and gathering information below (GUI)
 */
 
 // app is the function called to start the entire application
-let people = data;
+//let people = data;
+
 function app(people){
   var searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
   switch(searchType){
@@ -13,11 +14,15 @@ function app(people){
       mainMenu(foundPerson, people);
       break;
     case 'no':
+
       var notFound = searchByGender(people);
       mainMenu(foundPerson, people);
     // var searchByTraits =
 
       // TODO: search by traits
+
+//       foundPerson = searchByTraits(people);
+
       break;
       default:
     app(people); // restart app
@@ -27,7 +32,6 @@ function app(people){
 
 // Menu function to call once you find who you are looking for
 function mainMenu(person, people){
-
   /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
 
   if(!person){
@@ -38,9 +42,9 @@ function mainMenu(person, people){
   var displayOption = prompt("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
 
   switch(displayOption){
-    case 'info':
     // var foundPerson = searchByName(people);
     //   mainMenu(foundPerson, people);
+    case "info":
     // TODO: get person's info
     break;
     case "family":
@@ -72,6 +76,8 @@ function searchByName(people){
     }
   })
   // TODO: find the person using the name they entered
+  // find the person using the name they entered
+
   return foundPerson[0];
 }
 
@@ -93,6 +99,7 @@ function displayPerson(person){
   personInfo += "weight:" + person.weight + "\n";
   personInfo += "gender:" + person.gender + "\n";
   personInfo += "eyeColor"+ person.eyeColor +"\n";
+ // TODO: finish getting the rest of the information to display
   alert(personInfo);
 }
 
@@ -142,3 +149,13 @@ function notFound(){
 
  //    }
  //  }
+function searchByTraits(people){
+    if(searchByName = false){
+      var gender = promptFor("What is the person's gender?", chars);
+    else{
+
+    }
+  }
+
+}
+
