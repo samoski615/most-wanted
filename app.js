@@ -38,7 +38,9 @@ function mainMenu(person, people){
   var displayOption = prompt("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
 
   switch(displayOption){
-    case "info":
+    case 'info':
+    // var foundPerson = searchByName(people);
+    //   mainMenu(foundPerson, people);
     // TODO: get person's info
     break;
     case "family":
