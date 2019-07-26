@@ -4,7 +4,7 @@ Build all of your functions for displaying and gathering information below (GUI)
 */
 
 // app is the function called to start the entire application
-let people = data;
+//let people = data;
 
 function app(people){
   var searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
@@ -18,6 +18,10 @@ function app(people){
       mainMenu(foundPerson, people);
 // var search by Traits
 //TODO: search by traits
+
+      var notFound = searchByGender(people);
+      mainMenu(foundPerson, people);
+//foundPerson = searchByTraits(people);
       break;
       default:
     app(people); // restart app
@@ -37,6 +41,8 @@ function mainMenu(person, people){
   var displayOption = prompt("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
 
   switch(displayOption){
+    // var foundPerson = searchByName(people);
+    //   mainMenu(foundPerson, people);
     case "info":
     // TODO: get person's info
     break;
@@ -68,7 +74,9 @@ function searchByName(people){
       return false;
     }
   })
+  // TODO: find the person using the name they entered
   // find the person using the name they entered
+
   return foundPerson[0];
 }
 
@@ -83,12 +91,13 @@ function displayPerson(person){
   // print all of the information about a person:
   // height, weight, age, name, occupation, eye color.
   var personInfo = "First Name: " + person.firstName + "\n";
-  personInfo += "Last Name: " + person.lastName + "\n";
-  personInfo += "height:" + person.height + "\n";
-  personInfo += "weight:" + person.weight + "\n";
-  personInfo += "eyeColor:" + person.eyeColor + "\n";
-  personInfo += "occupation:" + person.occupation + "\n";
-  personInfo += "age:" + person.age + "\n"; // TODO: finish getting the rest of the information to display
+  personInfo = "Last Name: " + person.lastName + "\n";
+  personInfo = "dob:" + person.dob + "\n";
+  personInfo = "height:" + person.height + "\n";
+  personInfo = "weight:" + person.weight + "\n";
+  personInfo = "eyeColor:" + person.eyeColor + "\n";
+  personInfo = "occupation:" + person.occupation + "\n";
+  // TODO: finish getting the rest of the information to display
   alert(personInfo);
 }
 
@@ -133,26 +142,37 @@ function chars(input){
 //   // find the person using the name they entered
 //   return foundPerson[0];
 
-function searchByGender(gender){
-  searchByGender = promptFor("Hello World", chars);
-}
-
-function searchByEyeColor(eyeColor){
+// function searchByTraits(people)
   
-}
+ // if (searchByName = false){
+ //    var gender = promptFor("What is the person's gender?" , chars);
+ //    else{
 
-function searchByHeight(height){
+ //    }
+ //  }
+  function searchByTraits(people){
+      if(searchByName = false){
+        var gender = promptFor("What is the person's gender?", chars);
+      else{
+  }
+  function searchByEyeColor(eyeColor){
+    
+  }
 
-}
+  function searchByHeight(height){
 
-function searchByWeight(weight){
+  }
 
-}
+  function searchByWeight(weight){
 
-function searchByAge(dob){
+  }
 
-}
+  function searchByAge(dob){
 
-function notFound(){
-  
+  }
+
+  function notFound(){
+    
+  }
+
 }
