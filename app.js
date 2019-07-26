@@ -14,7 +14,10 @@ function app(people){
       mainMenu(foundPerson, people);
       break;
     case 'no':
-      foundPerson = searchByTraits(people);
+      var notFound = searchByGender(people);
+      mainMenu(foundPerson, people);
+// var search by Traits
+//TODO: search by traits
       break;
       default:
     app(people); // restart app
@@ -85,8 +88,7 @@ function displayPerson(person){
   personInfo += "weight:" + person.weight + "\n";
   personInfo += "eyeColor:" + person.eyeColor + "\n";
   personInfo += "occupation:" + person.occupation + "\n";
-  parent
- // TODO: finish getting the rest of the information to display
+  personInfo += "age:" + person.age + "\n"; // TODO: finish getting the rest of the information to display
   alert(personInfo);
 }
 
@@ -108,12 +110,49 @@ function chars(input){
   return true; // default validation only
 }
 
-function searchByTraits(people){
-    if(searchByName = false){
-      var gender = promptFor("What is the person's gender?", chars);
-    else{
+// function searchByGender(people){
+//     if(searchByName = false){
+//       var gender = promptFor("What is the person's gender?", chars);
+//     }
+//     else{
+//       return response;
+//     }
+//   } 
 
-    }
-  }
+// function searchByGender(){
+//   var gender = promptFor("What is the person's first name?", chars);
 
+//   notFoundPerson = people.filter(function(){
+//     if(person.firstName === firstName && person.lastName === lastName){
+//       return true;
+//     }
+//     else{
+//       return false;
+//     }
+//   })
+//   // find the person using the name they entered
+//   return foundPerson[0];
+
+function searchByGender(gender){
+  searchByGender = promptFor("Hello World", chars);
+}
+
+function searchByEyeColor(eyeColor){
+  
+}
+
+function searchByHeight(height){
+
+}
+
+function searchByWeight(weight){
+
+}
+
+function searchByAge(dob){
+
+}
+
+function notFound(){
+  
 }
