@@ -18,13 +18,13 @@ function app(people){
     //   var notFound = people.filter(searchByEyeColor(people));
     //   break;
     // case 'no':
-    //   notFound = people.filter(searchByGender(people));
-    //   break;
+      // notFound = people.filter(searchByGender(people));
+      // break;
     // case 'no':
     //   notFound = people.filter(searchByWeight(people));
     //   break;
     case 'no':
-      searchByTraits(people);
+      searchByTraits();
       break;
      default:
       app(people); // restart app
@@ -43,13 +43,12 @@ function mainMenu(person, people){
   var displayOption = prompt("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
 
   switch(displayOption){
-    // var foundPerson = searchByName(people);
-    //   mainMenu(foundPerson, people);
     case "info":
     // get person's info
     displayPerson(person);
     break;
     case "family":
+    searchByTraits(searchByFamily, person);
     // TODO: get person's family
     break;
     case "descendants":
@@ -82,7 +81,6 @@ function searchByName(people){
 
 
 // alerts a list of people
-
 function displayPeople(people){
   alert(people.map(function(person){
     return person.firstName + " " + person.lastName;
@@ -120,19 +118,21 @@ function chars(input){
   return true; // default validation only
 }
 
-// function searchByGender(){
-//   var gender = promptFor("What is the person's first name?", chars);
+function searchByGender(people){
+  var gender = promptFor("What is the person's gender?", chars);
 
-//   notFoundPerson = people.filter(function(){
-//     if(person.firstName === firstName && person.lastName === lastName){
-//       return true;
-//     }
-//     else{
-//       return false;
-//     }
-//   })
-//   // find the person using the name they entered
-//   return foundPerson[0];
+  notFoundPerson = people.filter(function(){
+    if(person.gender == "male"){
+      return true;
+    }
+    else{
+      (person.gender == "female")
+      return(notFoundPerson);
+    }
+  })
+  }
+  // find the person using their gender
+  // return foundPerson[0];
 
 function searchByEyeColor(people){
   var eyeColor = promptFor("What is the person's eye color?", chars);
@@ -147,21 +147,19 @@ function searchByEyeColor(people){
   return foundPerson[0];
 }
   
-//   function searchByHeight(height){
+function searchByFamily(person,people){
+   var personsSpouse = "Spouse:" + person.currentSpouse + "\n";
+   var personsParents = "Parents:" + person.parents + "\n";
+    data.filter(mainMenu(personsSpouse));
 
-//   }
+    if (personsSpouse == 0); {
+      alert(personsFamily);
+   return(personsFamily);
+    }    
+   
+}
 
-//   function searchByWeight(weight){
-
-//   }
-
-//   function searchByAge(dob){
-
-//   }
-
-//   function notFound(){
-    
-//   }
-
-// }
-
+function searchByTraits(input){
+    var input = promptFor("Would you like to search by Gender, Eye Color, Height, Weight, Occupation, or Date of Birth?", chars);
+    return(input);
+}
