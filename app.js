@@ -4,27 +4,16 @@ Build all of your functions for displaying and gathering information below (GUI)
 */
 
 // app is the function called to start the entire application
-//let people = data;
 
 function app(people){
   var searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
-  //var people = data;
   switch(searchType){
     case 'yes':
       var foundPerson = searchByName(people);
       mainMenu(foundPerson, people);
       break;
-    // case 'no':
-    //   var notFound = people.filter(searchByEyeColor(people));
-    //   break;
-    // case 'no':
-      // notFound = people.filter(searchByGender(people));
-      // break;
-    // case 'no':
-    //   notFound = people.filter(searchByWeight(people));
-    //   break;
-    case 'no':
-      searchByTraits();
+       case 'no':
+      searchByTraits(input);
       break;
      default:
       app(people); // restart app
@@ -65,11 +54,11 @@ function mainMenu(person, people){
 }
 
 function searchByName(people){
-  var firstName = promptFor("What is the person's first name?", chars);
-  var lastName = promptFor("What is the person's last name?", chars);
+  var firstName = promptFor("What is the person's first name?", chars.toLowerCase());
+  var lastName = promptFor("What is the person's last name?", chars.toLowerCase());
 
   var foundPerson = people.filter(function(person){
-    if(person.firstName === firstName && person.lastName === lastName){
+    if(person.firstName === person.firstName && person.lastName === person.lastName){
       return true;
     }
     else{
@@ -117,22 +106,49 @@ function yesNo(input){
 function chars(input){
   return true; // default validation only
 }
+  
+function searchByTraits(input){
+    var input = promptFor("Would you like to search by gender, eye color, height, weight, occupation, or date of birth?", chars.toLowerCase());
+    return(input);
+}
 
-function searchByGender(people){
-  var gender = promptFor("What is the person's gender?", chars);
+// function searchByGender(people){
+//   var gender = promptFor("What is the person's gender?", chars.toLowerCase());
 
-  notFoundPerson = people.filter(function(){
-    if(person.gender == "male"){
-      return true;
-    }
-    else{
-      (person.gender == "female")
-      return(notFoundPerson);
-    }
-  })
-  }
+//   searchByGender = people.filter(function(gender){
+    // if(person.gender == "male"){
+    //   return true;
+    // }
+    // else{
+    //   (person.gender == "female")
+    //   return(searchByGender);
+  //   }
+  // })
+  // }
   // find the person using their gender
   // return foundPerson[0];
+
+function searchByGender(people) {
+	var gender = promptFor("What is the person's gender?", chars.toLowerCase());
+	searchByGender = people.filter(function(gender){
+		switch (gender){
+			case "male":
+			return people.gender;
+				break;
+			case "female":
+			return people.gender;
+				break;
+
+	}
+	})
+	
+}
+
+
+
+
+
+
 
 function searchByEyeColor(people){
   var eyeColor = promptFor("What is the person's eye color?", chars);
@@ -150,16 +166,10 @@ function searchByEyeColor(people){
 function searchByFamily(person,people){
    var personsSpouse = "Spouse:" + person.currentSpouse + "\n";
    var personsParents = "Parents:" + person.parents + "\n";
-    data.filter(mainMenu(personsSpouse));
+    people.filter(mainMenu(personsSpouse));
 
     if (personsSpouse == 0); {
       alert(personsFamily);
    return(personsFamily);
     }    
-   
-}
-
-function searchByTraits(input){
-    var input = promptFor("Would you like to search by Gender, Eye Color, Height, Weight, Occupation, or Date of Birth?", chars);
-    return(input);
 }
