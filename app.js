@@ -13,6 +13,7 @@ function app(people){
       mainMenu(foundPerson, people);
       break;
        case 'no':
+      var input = whichTraitsToSearch(input);
       searchByTraits(input);
       break;
      default:
@@ -33,29 +34,29 @@ function mainMenu(person, people){
 
   switch(displayOption){
     case "info":
-    // get person's info
+    // get person's info (done)
     displayPerson(person);
     break;
     case "family":
-    searchByTraits(searchByFamily, person);
+    searchByFamily(person);
     // TODO: get person's family
     break;
     case "descendants":
     // TODO: get person's descendants
     break;
     case "restart":
-    app(people); // restart
+    app(people); // restart (done)
     break;
     case "quit":
-    return; // stop execution
+    return; // stop execution (done)
     default:
     return mainMenu(person, people); // ask again
   }
 }
 
 function searchByName(people){
-  var firstName = promptFor("What is the person's first name?", chars.toLowerCase());
-  var lastName = promptFor("What is the person's last name?", chars.toLowerCase());
+  var firstName = promptFor("What is the person's first name?", chars);
+  var lastName = promptFor("What is the person's last name?", chars);
 
   var foundPerson = people.filter(function(person){
     if(person.firstName === person.firstName && person.lastName === person.lastName){
@@ -66,7 +67,7 @@ function searchByName(people){
     }
   })
   return foundPerson[0];
-}// find the person using the name they entered
+}// find the person using the name they entered (done)
 
 
 // alerts a list of people
@@ -107,9 +108,21 @@ function chars(input){
   return true; // default validation only
 }
   
-function searchByTraits(input){
-    var input = promptFor("Would you like to search by gender, eye color, height, weight, occupation, or date of birth?", chars.toLowerCase());
+function whichTraitsToSearch(input){
+    var input = promptFor("Would you like to search by gender, eye color, height, weight, occupation, or date of birth?", chars);
     return(input);
+}
+
+function searchByTraits(input) {
+	switch (input){
+		case "gender":
+		var foundGender = searchByGender(input);
+        mainMenu(foundPerson, input);
+        break;
+        default:
+        break;
+	}
+
 }
 
 // function searchByGender(people){
@@ -129,16 +142,17 @@ function searchByTraits(input){
   // return foundPerson[0];
 
 function searchByGender(people) {
-	var gender = promptFor("What is the person's gender?", chars.toLowerCase());
+	var gender = promptFor("What is the person's gender?", chars.toLowerCase);
 	searchByGender = people.filter(function(gender){
 		switch (gender){
 			case "male":
-			return people.gender;
+			return searchByGender[0];
 				break;
 			case "female":
-			return people.gender;
+			return searchByGender[0];
 				break;
-
+			default:
+			return
 	}
 	})
 	
@@ -172,4 +186,7 @@ function searchByFamily(person,people){
       alert(personsFamily);
    return(personsFamily);
     }    
+
+
+
 }
