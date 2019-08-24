@@ -4,7 +4,7 @@ Build all of your functions for displaying and gathering information below (GUI)
 */
 
 // app is the function called to start the entire application
-
+let foundGender;
 function app(people){
   var searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
   switch(searchType){
@@ -116,58 +116,60 @@ function whichTraitsToSearch(input){
 function searchByTraits(input) {
 	switch (input){
 		case "gender":
-		var foundGender = searchByGender(input);
-        mainMenu(foundPerson, input);
-        break;
+		 foundGender = searchByGender(input);
+         break;
+        case "eye color":
+         var foundEyeColor = searchByEyeColor(input);
+         break;
+        case "height":
+         var foundHeight = searchByHeight(input);
+         break;
+        case "weight":
+         var foundWeight = searchByWeight(input);
+        case "occupation":
+         var foundOccupation = searchByOccupation(input);
+        case "date of birth":
+         var foundDateOfBirth = searchByDOB(input);
         default:
         break;
 	}
 
 }
 
-// function searchByGender(people){
-//   var gender = promptFor("What is the person's gender?", chars.toLowerCase());
-
-//   searchByGender = people.filter(function(gender){
-    // if(person.gender == "male"){
-    //   return true;
-    // }
-    // else{
-    //   (person.gender == "female")
-    //   return(searchByGender);
-  //   }
-  // })
-  // }
-  // find the person using their gender
-  // return foundPerson[0];
-
 function searchByGender(people) {
-	var gender = promptFor("What is the person's gender?", chars.toLowerCase);
-	searchByGender = people.filter(function(gender){
-		switch (gender){
+	var gender = promptFor("What is the person's gender?", chars);
+	switch (gender){
 			case "male":
-			return searchByGender[0];
+			return foundGender[0];
 				break;
 			case "female":
-			return searchByGender[0];
+			return foundGender[0]
 				break;
 			default:
-			return
-	}
-	})
+			return;
+		}
+	foundGender = data.filter(function(el){
+		if (el.gender === "male"){
+			return true;
+	    }else{
+			return false;
 	
-}
+		}
+		})
+	}
 
 
-
-
-
+		
+	
+	
+	
+	
 
 
 function searchByEyeColor(people){
   var eyeColor = promptFor("What is the person's eye color?", chars);
   var foundPerson = people.filter(function(person){
-    if(person.eyeColor === eyeColor){
+    if(person.eyeColor === person.eyeColor){
       return true;
     }
     else{
