@@ -4,7 +4,6 @@ Build all of your functions for displaying and gathering information below (GUI)
 */
 
 // app is the function called to start the entire application
-let foundGender;
 function app(people){
   var searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
   switch(searchType){
@@ -40,9 +39,11 @@ function mainMenu(person, people){
     case "family":
     searchByFamily(person);
     // TODO: get person's family
+    // TODO: displayFamily() write function similar to displayPerson()
     break;
     case "descendants":
     // TODO: get person's descendants
+    // TODO: displayDescendants() write function similar to displayPerson()
     break;
     case "restart":
     app(people); // restart (done)
@@ -53,21 +54,6 @@ function mainMenu(person, people){
     return mainMenu(person, people); // ask again
   }
 }
-
-function searchByName(people){
-  var firstName = promptFor("What is the person's first name?", chars);
-  var lastName = promptFor("What is the person's last name?", chars);
-
-  var foundPerson = people.filter(function(person){
-    if(person.firstName === person.firstName && person.lastName === person.lastName){
-      return true;
-    }
-    else{
-      return false;
-    }
-  })
-  return foundPerson[0];
-}// find the person using the name they entered (done)
 
 
 // alerts a list of people
@@ -107,7 +93,24 @@ function yesNo(input){
 function chars(input){
   return true; // default validation only
 }
-  
+ 
+
+function searchByName(people){
+  var firstName = promptFor("What is the person's first name?", chars);
+  var lastName = promptFor("What is the person's last name?", chars);
+
+  var foundPerson = people.filter(function(person){
+    if(person.firstName === person.firstName && person.lastName === person.lastName){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  return foundPerson[0];
+}// find the person using the name they entered (done)
+
+
 function whichTraitsToSearch(input){
     var input = promptFor("Would you like to search by gender, eye color, height, weight, occupation, or date of birth?", chars);
     return(input);
@@ -116,10 +119,11 @@ function whichTraitsToSearch(input){
 function searchByTraits(input) {
 	switch (input){
 		case "gender":
-		 foundGender = searchByGender(input);
+		 return searchByGender(people);
          break;
         case "eye color":
          var foundEyeColor = searchByEyeColor(input);
+         mainMenu(foundPerson, people);
          break;
         case "height":
          var foundHeight = searchByHeight(input);
@@ -136,40 +140,27 @@ function searchByTraits(input) {
 
 }
 
-function searchByGender(people) {
-	var gender = promptFor("What is the person's gender?", chars);
-	switch (gender){
-			case "male":
-			return foundGender[0];
-				break;
-			case "female":
-			return foundGender[0]
-				break;
-			default:
-			return;
-		}
-	foundGender = data.filter(function(el){
-		if (el.gender === "male"){
-			return true;
-	    }else{
-			return false;
-	
-		}
-		})
-	}
-
-
+// function searchByGender(people) {
+// 	var gender = promptFor("What is the person's gender?", chars);
+// 	switch (gender){
+// 			case "male":
+// 			return foundGender[0];
+// 				break;
+// 			case "female":
+// 			return foundGender[0]
+// 				break;
+// 			default:
+// 			return;
+// 		}
+// 	})
+// }
 		
 	
 	
-	
-	
-
-
 function searchByEyeColor(people){
   var eyeColor = promptFor("What is the person's eye color?", chars);
   var foundPerson = people.filter(function(person){
-    if(person.eyeColor === person.eyeColor){
+    if(person.eyeColor === foundPerson.eyeColor){
       return true;
     }
     else{
@@ -179,16 +170,16 @@ function searchByEyeColor(people){
   return foundPerson[0];
 }
   
-function searchByFamily(person,people){
-   var personsSpouse = "Spouse:" + person.currentSpouse + "\n";
-   var personsParents = "Parents:" + person.parents + "\n";
-    people.filter(mainMenu(personsSpouse));
+// function searchByFamily(person,people){
+//    var personsSpouse = "Spouse:" + person.currentSpouse + "\n";
+//    var personsParents = "Parents:" + person.parents + "\n";
+//     people.filter(mainMenu(personsSpouse));
 
-    if (personsSpouse == 0); {
-      alert(personsFamily);
-   return(personsFamily);
-    }    
+//     if (personsSpouse == 0); {
+//       alert(personsFamily);
+//    return(personsFamily);
+//     }    
 
 
 
-}
+// }
